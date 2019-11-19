@@ -1,4 +1,0 @@
-/home/tfn/git-project/RobotCoverageSys/calibration/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/tfn/git-project/RobotCoverageSys/calibration/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/tfn/git-project/RobotCoverageSys/calibration/cmake-build-debug/CMakeFiles/calibration.dir
-/home/tfn/git-project/RobotCoverageSys/calibration/cmake-build-debug/CMakeFiles/imagelist_creator.dir

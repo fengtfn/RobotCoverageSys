@@ -1,0 +1,4 @@
+calibration/cmake-build-debug/
+calibration/build/
+catkin_ws/guild/
+catkin_ws/devel

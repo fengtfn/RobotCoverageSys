@@ -1,9 +1,0 @@
-/home/tfn/software/clion-2019.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/tfn/git-project/RobotCoverageSys/calibration
--- OpenCV library status:
---     config: /usr/local/lib/cmake/opencv4
---     version: 4.1.2
---     libraries: opencv_calib3d;opencv_core;opencv_dnn;opencv_features2d;opencv_flann;opencv_gapi;opencv_highgui;opencv_imgcodecs;opencv_imgproc;opencv_ml;opencv_objdetect;opencv_photo;opencv_stitching;opencv_video;opencv_videoio
---     include path: /usr/local/include/opencv4
--- Configuring done
--- Generating done
--- Build files have been written to: /home/tfn/git-project/RobotCoverageSys/calibration/cmake-build-debug
