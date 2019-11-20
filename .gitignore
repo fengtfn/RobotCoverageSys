@@ -3,3 +3,4 @@ calibration/build/
 calibration/.idea/
 catkin_ws/guild/
 catkin_ws/devel
+catkin_ws/src/CoverageTest/.idea/
