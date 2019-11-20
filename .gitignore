@@ -1,4 +1,5 @@
 calibration/cmake-build-debug/
 calibration/build/
+calibration/.idea/
 catkin_ws/guild/
 catkin_ws/devel
