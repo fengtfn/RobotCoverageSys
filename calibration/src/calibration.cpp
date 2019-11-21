@@ -11,6 +11,7 @@
 #include <string.h>
 #include <time.h>
 #include <iostream>
+#include <unistd.h>
 
 using namespace cv;
 using namespace std;
@@ -526,9 +527,15 @@ int main( int argc, char** argv )
             blink = capture.isOpened();
         }
 
-        if(found)
-            drawChessboardCorners( view, boardSize, Mat(pointbuf), found );
-
+        if(found) {
+            drawChessboardCorners(view, boardSize, Mat(pointbuf), found);
+        } else {
+            cout << "not found !!!!!!" << endl;
+            cout << imageList[i].c_str() << endl;
+            std::string cmd = "rm " + imageList[i];
+            system(cmd.c_str());
+            system("clean");
+        }
         string msg = mode == CAPTURING ? "100/100" :
             mode == CALIBRATED ? "Calibrated" : "Press 'g' to start";
         int baseLine = 0;
@@ -582,6 +589,7 @@ int main( int argc, char** argv )
             if( !capture.isOpened() )
                 break;
         }
+	//sleep(2);
     }
 
     if( !capture.isOpened() && showUndistorted )
