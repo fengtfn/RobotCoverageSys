@@ -1,8 +1,14 @@
 calibration/cmake-build-debug/
 calibration/build/
 calibration/.idea/
+
 catkin_ws/guild/
 catkin_ws/devel
 catkin_ws/src/CoverageTest/.idea/
 catkin_ws/build/
 catkin_ws/.idea/
+
+homography/.idea/
+homography/build/
+homography/cmake-build-debug/
+
