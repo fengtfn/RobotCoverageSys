@@ -13,7 +13,6 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   tf
 )
-find_package(OpenCV REQUIRED)
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
@@ -119,7 +118,6 @@ catkin_package(
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
-        /usr/local/include/apriltag/
 )
 
 ## Declare a C++ library
@@ -135,7 +133,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(testtf_node src/testtf.cpp)
+add_executable(cameraTF_node src/cameraTF.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -148,10 +146,8 @@ add_executable(testtf_node src/testtf.cpp)
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
- target_link_libraries(testtf_node
+ target_link_libraries(cameraTF_node
    ${catkin_LIBRARIES}
-         ${OpenCV_LIBS}
-         /usr/local/lib/libapriltag.so
  )
 
 #############
