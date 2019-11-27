@@ -105,7 +105,7 @@ int undistortPic(std::string picdir, std::string distdir)
     return 0;
 }
 
-void opencvPNP(double * camD , double * distCoeffD, struct tfinfo & TF)
+void coordinateOpt(double * camD , double * distCoeffD, struct tfinfo & TF ,  cv::Mat & homography)
 {
     if (tagVec.size() == 0) {
         printf("!!!! not tag !!!!!\n");
@@ -143,8 +143,12 @@ void opencvPNP(double * camD , double * distCoeffD, struct tfinfo & TF)
     }
     Mat(imgpt).convertTo(imgM,CV_32F);
 
-    cout << "imgM is " << imgM << endl;
-    cout << "objM is " << objM << endl;
+//    cout << "imgM is " << imgM << endl;
+//    cout << "objM is " << objM << endl;
+
+    homography  = cv::findHomography(imgM,objM);
+    cout << "camera to world graphy " << homography << endl;
+
 
     Mat camera_matrix = Mat(3,3,CV_64FC1,camD);
     Mat distortion_coefficients = Mat(5,1,CV_64FC1,distCoeffD);
@@ -287,28 +291,28 @@ int main (int argc, char **argv)
 
     {
         aprilTag(pic1);
-        opencvPNP(camD_livR1,distCoeffD_livR1,TF_LR1_LR2_LiveR1);
+        coordinateOpt(camD_livR1,distCoeffD_livR1,TF_LR1_LR2_LiveR1,homography_LR1_LR2_LiveR1);
 
         aprilTag(pic2);
-        opencvPNP(camD_livR2,distCoeffD_livR2,TF_LR1_LR2_LiveR2);
+        coordinateOpt(camD_livR2,distCoeffD_livR2,TF_LR1_LR2_LiveR2,homography_LR1_LR2_LiveR2);
 
         aprilTag(pic3);
-        opencvPNP(camD_guestBedR,distCoeffD_guestBedR,TF_XF_Guest_Guest);
+        coordinateOpt(camD_guestBedR,distCoeffD_guestBedR,TF_XF_Guest_Guest,homography_XF_Guest_Guest);
 
         aprilTag(pic4);
-        opencvPNP(camD_xf,distCoeffD_xf,TF_XF_Guest_XF);
+        coordinateOpt(camD_xf,distCoeffD_xf,TF_XF_Guest_XF,homography_XF_Guest_XF);
 
         aprilTag(pic5);
-        opencvPNP(camD_livR2,distCoeffD_livR2,TF_XF_LR2_LiveR2);
+        coordinateOpt(camD_livR2,distCoeffD_livR2,TF_XF_LR2_LiveR2,homography_XF_LR2_LiveR2);
 
         aprilTag(pic6);
-        opencvPNP(camD_xf,distCoeffD_xf,TF_XF_LR2_XF);
+        coordinateOpt(camD_xf,distCoeffD_xf,TF_XF_LR2_XF,homography_XF_LR2_XF);
 
         aprilTag(pic7);
-        opencvPNP(camD_livR3,distCoeffD_livR3,TF_XF_LR3_LiveR3);
+        coordinateOpt(camD_livR3,distCoeffD_livR3,TF_XF_LR3_LiveR3,homography_XF_LR3_LiveR3);
 
         aprilTag(pic8);
-        opencvPNP(camD_xf,distCoeffD_xf,TF_XF_LR3_XF);
+        coordinateOpt(camD_xf,distCoeffD_xf,TF_XF_LR3_XF,homography_XF_LR3_XF);
     }
 
 
