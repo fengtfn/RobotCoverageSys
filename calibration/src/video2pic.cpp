@@ -31,9 +31,9 @@ void video2Pic(std::string video_path,std::string pic_save_path, std::string cam
         system("sync");
         cout << "create it at first!!" << endl;
     } else {
-        std::string cmd = "rm -rf " + pic_save_path + "/*";
-        system(cmd.c_str());
-        system("sync");
+        //std::string cmd = "rm -rf " + pic_save_path + "/*";
+        //system(cmd.c_str());
+        //system("sync");
     }
 
     std::string video_startTime = video_path.substr(video_path.rfind('/') + 1,10);
@@ -71,7 +71,7 @@ void video2Pic(std::string video_path,std::string pic_save_path, std::string cam
 
             char pic_name[56] = {0};
             long int timet = (long int)(1.0 / fps * frame) + mp4_begin_time;
-            snprintf(pic_name, sizeof(pic_name), "%ld_%s.png",timet,camera_id.c_str());
+            snprintf(pic_name, sizeof(pic_name), "%ld-%s.png",timet,camera_id.c_str());
 
             //cout << "save pic name is " << pic_name << endl;
             bool result = cv::imwrite(pic_save_path + "/" + std::string(pic_name),src);

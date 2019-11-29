@@ -37,7 +37,7 @@ struct picinfo{
     Point2f coord;
 };
 
-const std::string video2pic = "/home/tfn/git-project/RobotCoverageSys/catkin_ws/src/CoverageTest/pic2/";
+const std::string video2pic = "/home/tfn/git-project/RobotCoverageSys/catkin_ws/src/CoverageTest/picdemo/";
 
 vector<struct  picinfo> imgpt;
 vector<Point2f> objpt;
@@ -135,7 +135,7 @@ void scan_one_dir( const char * dir_name)
         sprintf(wholePath, "%s%s", dir_name,  namelist[index]->d_name);
         string str(namelist[index]->d_name);
 
-        aprilTag(wholePath,str.substr(0,10),str.substr(str.find("_") + 1, str.rfind(".") - (str.find("_") + 1)) );
+        aprilTag(wholePath,str.substr(0,10),str.substr(str.rfind("-") + 1, str.rfind(".") - (str.rfind("-") + 1)) );
         free(namelist[index]);
         index++;
     }
@@ -161,10 +161,10 @@ int main (int argc, char **argv)
         vec.push_back(item.coord);
 
 
-        if (item.cameraID == "xf") {
+        if (item.cameraID == "XF") {
             cv::perspectiveTransform(Mat(vec),vecOut,homography_XF_LR2_XF);
         }
-        if (item.cameraID == "liv3") {
+        if (item.cameraID == "LiveR3") {
             Mat tag2xf;
             invert(homography_XF_LR3_XF,tag2xf);
             cv::perspectiveTransform(Mat(vec),vecOut,homography_XF_LR2_XF*tag2xf*homography_XF_LR3_LiveR3);
